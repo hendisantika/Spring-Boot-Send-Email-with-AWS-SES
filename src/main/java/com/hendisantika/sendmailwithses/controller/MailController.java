@@ -1,8 +1,14 @@
 package com.hendisantika.sendmailwithses.controller;
 
 import com.hendisantika.sendmailwithses.config.CustomPropertyConfig;
+import com.hendisantika.sendmailwithses.entity.Mail;
 import com.hendisantika.sendmailwithses.service.EmailSenderService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.mail.MessagingException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,4 +30,22 @@ public class MailController {
         this.customPropertyConfig = customPropertyConfig;
     }
 
+    @GetMapping(value = "/send")
+    public String sendMail() throws MessagingException {
+        Mail mail = getMail();
+        emailSenderService.sendEmail(mail);
+        return "Check your email";
+
+    }
+
+    private Mail getMail() {
+        Mail mail = new Mail();
+        mail.setFrom(customPropertyConfig.mailFrom);
+        mail.setTo("<toWhomEver@gmail.com>");
+        mail.setSubject("Simple mail");
+        Map<String, Object> model = new HashMap<>();
+        model.put("templateVariable", "Simple mail with aws..");
+        mail.setModel(model);
+        return mail;
+    }
 }
