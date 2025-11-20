@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '3.5.7'
+    id 'org.springframework.boot' version '4.0.0'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java'
 }
@@ -31,7 +31,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.cloud:spring-cloud-starter-aws'
     implementation 'com.amazonaws:aws-java-sdk-ses'
-    implementation 'org.springframework.boot:spring-boot-starter-mail:3.5.7'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:4.0.0'
     implementation 'org.springframework.boot:spring-boot-starter'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
